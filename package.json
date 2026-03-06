@@ -31,7 +31,6 @@
 		"svelte": "^5.0.0"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-vercel": "^6.3.1",
 		"@sveltejs/kit": "^2.50.2",
 		"@sveltejs/package": "^2.5.7",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
@@ -47,5 +46,8 @@
 	},
 	"keywords": [
 		"svelte"
-	]
+	],
+	"dependencies": {
+		"animejs": "^4.3.6"
+	}
 }

@@ -8,6 +8,25 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+
+	type Game = {
+		score: number;
+		shop: ShopItem[];
+		persecond: number;
+		perclick: number;
+	}
+	type ShopItem = {
+		name: string;
+		icon: string;
+		variety: string;
+		value: number;
+		price: number;
+	}
+
+	async function sleep(ms: number): Promise<void> {
+        return new Promise(
+        (resolve) => setTimeout(resolve, ms));
+    }
 }
 
 export {};
