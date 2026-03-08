@@ -9,13 +9,13 @@ declare global {
 		// interface Platform {}
 	}
 
-	type Game = {
+	declare type Game = {
 		score: number;
 		shop: ShopItem[];
 		persecond: number;
 		perclick: number;
 	}
-	type ShopItem = {
+	declare type ShopItem = {
 		name: string;
 		icon: string;
 		variety: string;
@@ -23,7 +23,7 @@ declare global {
 		price: number;
 	}
 
-	async function sleep(ms: number): Promise<void> {
+	export async function sleep(ms: number): Promise<void> {
         return new Promise(
         (resolve) => setTimeout(resolve, ms));
     }

@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:global {
+    @apply font-[Star-Crush]
+}
+
+:global {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+@layer base {
+    @font-face {
+        font-family: 'Star-Crush';
+        src: url('src/lib/Star Crush.otf');
+    }
+    @font-face {
+        font-family: 'RetroByte';
+        src: url('src/lib/RetroByte.ttf');
+    }
+}
+
+.outline-shadow-lg {
+    color: var(--color-rose-200);
+    text-shadow: 2px 2px 0px var(--color-blue-800), -2px 2px 0px var(--color-blue-800), 2px -2px 0px var(--color-blue-800), -2px -2px 0px var(--color-blue-800), 2px 0px 0px var(--color-blue-800), -2px 0px 0px var(--color-blue-800), 0px 2px 0px var(--color-blue-800), 0px -2px 0px var(--color-blue-800), 2px 5px 0px var(--color-blue-800);
+}
+
+.outline-shadow-sm {
+    color: var(--color-rose-200);
+    text-shadow: 1.5px 1.5px 0px var(--color-blue-800), -1.5px 1.5px 0px var(--color-blue-800), 1.5px -1.5px 0px var(--color-blue-800), -1.5px -1.5px 0px var(--color-blue-800), 1.5px 0px 0px var(--color-blue-800), -1.5px 0px 0px var(--color-blue-800), 0px 1.5px 0px var(--color-blue-800), 0px -1.5px 0px var(--color-blue-800), 1.5px 3.5px 0px var(--color-blue-800);
+}
+
+div {
+
+    -webkit-user-select: none;
+    user-select: none;
+}
