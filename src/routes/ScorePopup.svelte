@@ -8,7 +8,7 @@
     import CeilingPoint from "./CeilingPoint.svelte";
 
     let text: HTMLSpanElement;
-    const { initX, initY, score, turn }: { initX: number, initY: number, score: number, turn: number } = $props();
+    const { initX, initY, score, turn }: { initX: number, initY: number, score: string, turn: number } = $props();
     onMount(() => {
         animate(text, {
             opacity: [1, 0],

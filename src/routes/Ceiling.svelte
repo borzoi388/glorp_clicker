@@ -17,8 +17,8 @@
         x = initX;
         fall();
         animate(ceiling, {
-            opacity: [1, 0],
-            rotate: [0, Math.round(turn*100)],
+            opacity: [0.8, 0],
+            rotate: [0, Math.round(turn*150)],
             ease: "in",
             duration: 500,
         })

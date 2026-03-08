@@ -37,3 +37,12 @@ div {
     -webkit-user-select: none;
     user-select: none;
 }
+@reference "tailwindcss";
+button {
+    @apply text-blue-800 bg-rose-200 border-2 border-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)]
+}
+
+@reference "tailwindcss";
+button:active {
+    @apply shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] translate-[2px] 
+}

@@ -40,5 +40,5 @@
     <Ceiling initX={ceiling.left} initY={ceiling.top} turn={ceiling.turn}/>
 {/each}
 {#each ceilings as ceiling}
-    <ScorePopup score={ceiling.score} initX={ceiling.left} initY={ceiling.top} turn={ceiling.turn*10}/>
+    <ScorePopup score={ceiling.score.toFixed(2)} initX={ceiling.left} initY={ceiling.top} turn={ceiling.turn*10}/>
 {/each}
