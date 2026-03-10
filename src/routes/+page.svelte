@@ -1,5 +1,5 @@
 <script lang=ts>
-    export async function sleep(ms: number): Promise<void> {
+    async function sleep(ms: number): Promise<void> {
         return new Promise(
         (resolve) => setTimeout(resolve, ms));
     }
@@ -8,45 +8,53 @@
             score: 0,
             shop: [
                 { 
-                    name: "smalling",
+                    name: "Smalling",
                     icon: "src/lib/images/ceiling.png",
                     variety: "click",
                     value: 1,
                     price: 15,
                     description: "33cm ceiling creature"
                 }, {
-                    name: "smolhaj",
+                    name: "Smolhaj",
                     icon: "src/lib/images/blahaj.png",
                     variety: "auto",
                     value: 1,
                     price: 100,
                     description: "high quality ikea shark!!!",
                 }, {
-                    name: "medium ceiling",
+                    name: "Medium ceiling",
                     icon: "src/lib/images/ceiling.png",
                     variety: "click",
-                    value: 4,
+                    value: 6,
                     price: 500,
                     description: "44cm plush ceiling",
                 }, {
-                    name: "blahaj",
+                    name: "Blahaj",
                     icon: "src/lib/images/blahaj.png",
                     variety: "auto",
-                    value: 5,
-                    price: 2000,
+                    value: 8,
+                    price: 1500,
                     description: "BIG shonk!",
                 }, {
-                    name: "big ceiling",
+                    name: "Big ceiling",
                     icon: "src/lib/images/ceiling.png",
-                    variety: "cpc",
-                    value: 1,
-                    price: 6000,
+                    variety: "click",
+                    value: 24,
+                    price: 4000,
+                    description: "the larges ceiling ever!!",
+                }, {
+                    name: "Big ceiling",
+                    icon: "src/lib/images/ceiling.png",
+                    variety: "click",
+                    value: 24,
+                    price: 4000,
                     description: "the larges ceiling ever!!",
                 }, 
             ],
             perclick: 1,
             persecond: 0,
-            multperclick: 1
+            multperclick: 1,
+            highScore: 0
         }
 	}
 
@@ -60,9 +68,11 @@
     import CeilingAnimations from "./CeilingAnimations.svelte";
     import CeilingPoint from "./CeilingPoint.svelte";
     import ShopItemComponent from "./ShopItemComponent.svelte";
+    import Btn from "./Btn.svelte";
 
     let ceilingAnimations: any;
-    let showAnimations: boolean = $state(true);
+    let hideAnimations: boolean = $state(false);
+    let gambling: boolean = $state(false);
 
     let subscribe: boolean = false;
     let game = $state(writable(newGame()));
@@ -93,20 +103,30 @@
     }
     game.subscribe(() => {
         if (browser && subscribe) {
+            if ($game.score > $game.highScore) {
+                $game.highScore = $game.score
+            }
             localStorage.setItem("game", JSON.stringify($game))
         }
     })
 
     async function click() {
-        $game.score+=$game.perclick;
-        $game.score*=$game.multperclick;
-        game.update(() => $game);
-        ceilingAnimations.addCeiling($game.perclick);
         animate(ceiling, {
             scaleY: [1.1, 0.9, 1],
             scaleX: [0.9, 1.1, 1],
-            duration: 200,
+            ease: "in",
+            duration: 150,
         })
+        if (ceilingAnimations) {
+            if ($game.multperclick > 1) {
+                ceilingAnimations.addCeiling($game.score*($game.multperclick-1)+$game.perclick)
+            } else {
+                ceilingAnimations.addCeiling($game.perclick);
+            }
+        }
+        $game.score+=$game.perclick;
+        $game.score*=$game.multperclick;
+        game.update(() => $game);
     }
 
     function buyItem(item: ShopItem) {
@@ -161,7 +181,8 @@
             <div class="bg-sky-200 bg-contain bg-center bg-no-repeat self-start w-full text-center p-4">
                 <h1 class="text-8xl font-[Star-Crush] outline-shadow-lg">Ceiling Clicker</h1>
                 <div class="block flex flex-wrap mt-2 justify-center">
-                    <button class="px-2 py-1 text-blue-800 bg-rose-200 border-2 border-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)] active:bg-rose-300" onclick={clearGame}>Clear Game</button>
+                    <Btn bind:isChecked={hideAnimations} label="Hide Animations"/>
+                    <button class="px-[8px] py-[4px] text-blue-800 bg-rose-200 border-2 border-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)] translate-0 active:shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] active:translate-[2px] active:p-[5px_7px_3px_9px] m-1" onclick={clearGame}>Reset Game</button>
                 </div>
             </div>
 
@@ -172,26 +193,32 @@
         <div class="col-span-1 bg-purple-300 p-4 flex flex-col">
 
 
-            <h1 class="font-[Star-Crush] text-6xl text-center my-3 text-blue-800">
-                Shop
-            </h1>
-            <div class="bg-rose-200 h-64 border border-2 shadow-[2px_2px_0px_0px_var(--color-blue-800)] border-blue-800 flex-grow-1 overflow-scroll py-1">
-                {#each $game.shop as item}
-                    <!-- svelte-ignore a11y_click_events_have_key_events -->
-                    <!-- svelte-ignore a11y_no_static_element_interactions -->
-                     <div onclick={() => buyItem(item)} class="cursor-pointer">
-                        <ShopItemComponent item={item} faded={$game.score < item.price} hidden={$game.score < item.price*0.8 && $game.score < item.price-100 && !item.hasPurchased}/>
-                    </div>
-                {/each}
+            <div class="text-6xl font-[Star-Crush] grid grid-cols-2 translate-[-2px]">
+                <button onclick={() => gambling = false} class="{gambling ? "shadow-none translate-[2px]" : "active:translate-[2px] translate-0"} px-[8px] py-[8px] text-blue-800 bg-rose-200 border-2 border-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)] active:shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] active:p-[9px_7px_7px_9px]">Shop</button>
+                <button onclick={() => gambling = true} class="{!gambling ? "shadow-none translate-[2px]" : "active:translate-[2px] translate-0"} px-[8px] py-[8px] text-blue-800 bg-rose-200 border-2 border-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)] active:shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] active:p-[9px_7px_7px_9px]">Casino</button>
+
+            </div>
+            <div class=" bg-rose-100 h-64 mt-2 border border-2 border-blue-800 flex-grow-1 overflow-scroll py-1">
+                {#if (!gambling)}
+                    {#each $game.shop as item}
+                        <!-- svelte-ignore a11y_click_events_have_key_events -->
+                        <!-- svelte-ignore a11y_no_static_element_interactions -->
+                        <div onclick={() => buyItem(item)} class="cursor-pointer">
+                            <ShopItemComponent item={item} faded={$game.score < item.price} hidden={$game.highScore < item.price*0.4 && $game.highScore < item.price-100 && !item.hasPurchased} visible={$game.highScore > item.price*0.2 || item.hasPurchased || $game.score > item.price-101}/>
+                        </div>
+                    {/each}
+                {:else}
+
+                {/if}
             </div>
         </div>
 
 
     </div>
-    <div class="w-full row-span-1 p-4 bg-sky-200 z-index-2">
+    <div class="w-full row-span-1 p-4 bg-sky-200 z-index-2 overflow-hidden">
         <div class="block font-[Star-Crush] text-6xl flex grid grid-cols-3">
             <div class="col-span-1">
-                <span class="outline-shadow-sm">{$game.score.toFixed(0)}</span><CeilingPoint/>
+                <span class="outline-shadow-sm">{Math.round($game.score).toLocaleString('en-US')}</span><CeilingPoint/>
             </div>
             <div class="col-span-1 text-center">
                 <span class="outline-shadow-sm">{$game.persecond.toFixed(2)}</span><CeilingPoint/><span class="outline-shadow-sm">/s</span>
@@ -202,7 +229,7 @@
         </div>
     </div>
 
-    {#if showAnimations}
+    {#if !hideAnimations}
         <CeilingAnimations bind:this={ceilingAnimations}/>
     {/if}
     <!-- <StickerOverlay stickers={$game.stickers}/> -->
