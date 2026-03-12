@@ -26,7 +26,7 @@
             score: score,
             top: mousePos.y,
             left: mousePos.x,
-            turn: Math.random()-0.5,
+            turn: Math.random()-0.5
         })
         await sleep(1000);
         numAnimating--;

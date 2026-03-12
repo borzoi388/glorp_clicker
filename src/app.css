@@ -39,3 +39,6 @@ div {
 }
 
 
+input:focus {
+    outline: none;
+}

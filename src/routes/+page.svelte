@@ -8,48 +8,69 @@
             score: 0,
             shop: [
                 { 
-                    name: "Smalling",
-                    icon: "src/lib/images/ceiling.png",
+                    name: "Low quality ceiling",
+                    icon: "src/lib/images/ceiling5.png",
                     variety: "click",
                     value: 1,
                     price: 15,
-                    description: "33cm ceiling creature"
+                    description: "A small ceiling with enough pixels for perchance a few nickels"
                 }, {
-                    name: "Smolhaj",
-                    icon: "src/lib/images/blahaj.png",
+                    name: "Deflated blahaj",
+                    icon: "src/lib/images/blahaj2.png",
                     variety: "auto",
                     value: 1,
                     price: 100,
-                    description: "high quality ikea shark!!!",
+                    description: "Blahaj!! But... where is its robustness!?",
                 }, {
-                    name: "Medium ceiling",
-                    icon: "src/lib/images/ceiling.png",
+                    name: "Low poly blahaj",
+                    icon: "src/lib/images/blahaj3.png",
                     variety: "click",
                     value: 6,
                     price: 500,
-                    description: "44cm plush ceiling",
+                    description: "A fresh looking blahaj with a few faces",
                 }, {
-                    name: "Blahaj",
-                    icon: "src/lib/images/blahaj.png",
+                    name: "Ceiling",
+                    icon: "src/lib/images/ceiling.png",
                     variety: "auto",
                     value: 8,
                     price: 1500,
-                    description: "BIG shonk!",
+                    description: "6.8 ounces and full of ceiling",
                 }, {
-                    name: "Big ceiling",
-                    icon: "src/lib/images/ceiling.png",
+                    name: "Blahaj",
+                    icon: "src/lib/images/blahaj.png",
                     variety: "click",
                     value: 24,
                     price: 4000,
-                    description: "the larges ceiling ever!!",
+                    description: "39.25 inches of pure shonk!",
                 }, {
-                    name: "Big ceiling",
-                    icon: "src/lib/images/ceiling.png",
-                    variety: "click",
-                    value: 24,
-                    price: 4000,
-                    description: "the larges ceiling ever!!",
-                }, 
+                    name: "Double ceiling",
+                    icon: "src/lib/images/ceiling2.png",
+                    variety: "auto",
+                    value: 50,
+                    price: 10000,
+                    description: "Double the ceiling, double the fun!",
+                }, {
+                    name: "Bass ceiling",
+                    icon: "src/lib/images/seal_bassist.png",
+                    variety: "cpc",
+                    value: 0.1,
+                    price: 20000,
+                    description: "A ceiling with a bass guitar",
+                }, {
+                    name: "Ceiling family",
+                    icon: "src/lib/images/ceiling3.png",
+                    variety: "auto",
+                    value: 2000,
+                    price: 40000,
+                    description: "This number of ceilings for such a low low price!? Unprecedented!",
+                }, {
+                    name: "High quality ceiling",
+                    icon: "src/lib/images/ceiling4.png",
+                    variety: "cpc",
+                    value: 0.3,
+                    price: 60000,
+                    description: "This ceiling has extended beyond its dimension to something greater...?!",
+                },
             ],
             perclick: 1,
             persecond: 0,
@@ -69,6 +90,7 @@
     import CeilingPoint from "./CeilingPoint.svelte";
     import ShopItemComponent from "./ShopItemComponent.svelte";
     import Btn from "./Btn.svelte";
+    import Slots from "./Slots.svelte";
 
     let ceilingAnimations: any;
     let hideAnimations: boolean = $state(false);
@@ -119,9 +141,9 @@
         })
         if (ceilingAnimations) {
             if ($game.multperclick > 1) {
-                ceilingAnimations.addCeiling($game.score*($game.multperclick-1)+$game.perclick)
+                ceilingAnimations.addCeiling($game.score*($game.multperclick-1)+$game.perclick, false)
             } else {
-                ceilingAnimations.addCeiling($game.perclick);
+                ceilingAnimations.addCeiling($game.perclick, false);
             }
         }
         $game.score+=$game.perclick;
@@ -133,7 +155,7 @@
         if ($game.score >= item.price) {
             item.hasPurchased = true;
             $game.score-=item.price;
-            item.price = Math.round(item.price*1.5);
+            item.price = Math.round(item.price*1.3);
             if (item.variety == "click") {
                 $game.perclick+=item.value;
             } else if (item.variety == "auto") {
@@ -158,7 +180,6 @@
     }
 
     async function ceiling_spin() {
-        console.log("e")
         await animate(ceiling, {
             rotate: [-10, 10],
             duration: 3000,
@@ -194,8 +215,8 @@
 
 
             <div class="text-6xl font-[Star-Crush] grid grid-cols-2 translate-[-2px]">
-                <button onclick={() => gambling = false} class="{gambling ? "shadow-none translate-[2px]" : "active:translate-[2px] translate-0"} px-[8px] py-[8px] text-blue-800 bg-rose-200 border-2 border-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)] active:shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] active:p-[9px_7px_7px_9px]">Shop</button>
-                <button onclick={() => gambling = true} class="{!gambling ? "shadow-none translate-[2px]" : "active:translate-[2px] translate-0"} px-[8px] py-[8px] text-blue-800 bg-rose-200 border-2 border-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)] active:shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] active:p-[9px_7px_7px_9px]">Casino</button>
+                <button onclick={() => gambling = false} class="{gambling ? "shadow-none translate-[2px]" : "active:translate-[2px] translate-0"} px-[8px] py-[8px] text-blue-800 bg-rose-100 border-2 border-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)] active:shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] active:p-[9px_7px_7px_9px]">Shop</button>
+                <button onclick={() => gambling = true} class="{!gambling ? "shadow-none translate-[2px]" : "active:translate-[2px] translate-0"} px-[8px] py-[8px] text-blue-800 bg-rose-100 border-2 border-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)] active:shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] active:p-[9px_7px_7px_9px]">Casino</button>
 
             </div>
             <div class=" bg-rose-100 h-64 mt-2 border border-2 border-blue-800 flex-grow-1 overflow-scroll py-1">
@@ -208,7 +229,7 @@
                         </div>
                     {/each}
                 {:else}
-
+                    <Slots animations={ceilingAnimations} bind:score={$game.score}/>
                 {/if}
             </div>
         </div>
