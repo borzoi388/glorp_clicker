@@ -1,6 +1,6 @@
 [build]
-  command = "cp -r ./clicker ./build && npm run build"
+  command = "npm run build"
   publish = "build"
 
 [functions]
-  included_files = ["./src/lib/images/*.png", "./src/lib/*.ttf", "./src/lib/*.otf"]
+  included_files = ["../src/lib/images/*.png", "../src/lib/*.ttf", "../src/lib/*.otf"]
