@@ -48,6 +48,7 @@
 		"svelte"
 	],
 	"dependencies": {
+		"@sveltejs/adapter-netlify": "^6.0.4",
 		"animejs": "^4.3.6"
 	}
 }
