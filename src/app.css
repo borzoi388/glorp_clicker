@@ -14,11 +14,11 @@
 @layer base {
     @font-face {
         font-family: 'Star-Crush';
-        src: url('src/lib/Star Crush.otf');
+        src: url('Star Crush.otf');
     }
     @font-face {
         font-family: 'RetroByte';
-        src: url('src/lib/RetroByte.ttf');
+        src: url('RetroByte.ttf');
     }
 }
 
@@ -36,9 +36,4 @@ div {
 
     -webkit-user-select: none;
     user-select: none;
-}
-
-
-input:focus {
-    outline: none;
 }
