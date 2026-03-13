@@ -5,7 +5,6 @@
     let score: number = $state(0);
     let span: HTMLDivElement;
     export async function appear(num: number) {
-        console.log("Aaa")
         score = num;
         await animate(span, {
             scale: [0.8, 1],

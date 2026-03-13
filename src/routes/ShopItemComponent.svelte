@@ -24,7 +24,7 @@
         <div onclick={buy} class="flex items-stretch border border-2 border-blue-800 {!faded ? "-translate-[2px] shadow-[2px_2px_0px_0px_var(--color-blue-800)] bg-rose-200" : "bg-rose-200/50"} {isPressed ? "shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] translate-0 p-[5px_1px_3px_1px]" : "py-[4px]"}">
             <div class="w-28 mr-2 bg-contain bg-center bg-no-repeat px-2 border-r-2 border-blue-800">
                 {#if !hidden}
-                    <div class="size-full hover:scale-110 transition duration-50 bg-[url({item.icon})] bg-contain bg-center bg-no-repeat"></div>
+                    <img src={item.icon} class="size-full object-center object-contain hover:scale-110 transition duration-50">
                 {:else}
                     <div class="bg-blue-800 size-full hover:scale-110 transition duration-50" style="mask-image: url({item.icon}); mask-size: contain; mask-repeat: no-repeat; mask-position: center"></div>
                 {/if}

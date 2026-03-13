@@ -51,11 +51,13 @@
             if (ms < 300) {
                 spinCol(col, ms+25);
             } else if (col == 2) {
+                await sleep(20)
                 addBet([slots[0].curr, slots[1].curr, slots[2].curr])
             }
         }
     }
 
+    //Evil ahh function
     function addBet(thingy: Array<number | string>) {
         let map: Map<number | string, number> = new Map();
         let mult: number = -1;
@@ -66,21 +68,33 @@
                 map.set(thingy[i], 1);
             }
         }
-        for(var key of map.keys()) {
-            if (key == "ceiling") { 
-                if (map.get(key) == 3) { mult = Math.max(mult, 100) } else if (map.get(key) == 2) { mult = Math.max(mult, 4) } else { mult = Math.max(mult, 0) }
-            } else if (key == "blahaj") {
-                console.log("kdsf")
-                if (map.get(key)+Math.max(map.get("ceiling"), 0) == 3) { mult = Math.max(mult, 25) } else
-                if (map.get(key)+Math.max(map.get("ceiling"), 0) == 2) { mult = Math.max(mult, 4) } else { mult = 0 }
-            
+        if (map.size == 3) {
+            if (map.has("ceiling")&&map.has("blahaj")) {
+                mult = 3;
+            } else if (map.has("ceiling")||map.has("blahaj")) {
+                mult = 0;
             }
-            if (typeof key == typeof 1) {
-            if (map.get(key) == 3) { mult = Math.max(mult, 3) } else if (map.get(key) == 2) { mult = Math.max(mult, 2); } }
+        } else if (map.size == 2) {
+            if (map.has("ceiling") && map.has("blahaj")) {
+                mult = 25;
+            } else if (map.has("ceiling") || map.has("blahaj")) {
+                for (var thing of ["ceiling", "blahaj"]) {
+                    if (map.has(thing) && map.get(thing) == 2) {
+                        mult = 3; 
+                    }
+                }
+            }
+            if (mult < 1) {
+                mult = 2;
+            }
+        } else if (map.size == 1) {
+            if (map.has("ceiling") || map.has("blahaj")) {
+                mult = 25;
+            } else { mult = 4 }
         }
-        console.log(bet*mult)
         popup.appear(bet*mult);
         score += bet*mult;
+        checkBet();
         isBetting = false;
     }
 
@@ -116,9 +130,9 @@
     <div class="w-1/2 bg-slate-100 border border-2 border-blue-800 p-2 text-blue-800">
         No matches: lose your bet <br>
         Two of any number: 2x your bet <br>
-        Three of any number: 3x your bet <br>
+        Three of any number: 4x your bet <br>
         One of any special: keep your bet <br>
-        Two of any special: 4x your bet <br>
+        Two of any special: 3x your bet <br>
         Three of any special: 25x your bet <br>
         Three ceilings: 100x your bet <br>
     </div>

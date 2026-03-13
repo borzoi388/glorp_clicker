@@ -13,7 +13,7 @@
                     variety: "click",
                     value: 1,
                     price: 15,
-                    description: "A small ceiling with enough pixels for perchance a few nickels"
+                    description: "Is it a speck of sand? Is it a singular pixel? No... it's low quality ceiling!"
                 }, {
                     name: "Deflated blahaj",
                     icon: "src/lib/images/blahaj2.png",
@@ -60,15 +60,15 @@
                     name: "Ceiling family",
                     icon: "src/lib/images/ceiling3.png",
                     variety: "auto",
-                    value: 2000,
+                    value: 800,
                     price: 40000,
                     description: "This number of ceilings for such a low low price!? Unprecedented!",
                 }, {
                     name: "High quality ceiling",
                     icon: "src/lib/images/ceiling4.png",
-                    variety: "cpc",
-                    value: 0.3,
-                    price: 60000,
+                    variety: "auto",
+                    value: 2000,
+                    price: 100000,
                     description: "This ceiling has extended beyond its dimension to something greater...?!",
                 },
             ],
@@ -174,7 +174,6 @@
             localStorage.setItem("game", JSON.stringify(newGame())); 
             $game = JSON.parse(localStorage.getItem("game"))
             game.update(() => $game);
-            console.log($game)
 
         }
     }
