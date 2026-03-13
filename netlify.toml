@@ -1,6 +1,7 @@
-[build]
-  command = "npm run build"
-  publish = "build"
 
 [functions]
   included_files = ["src/lib/images/*", "src/lib/*.ttf", "src/lib/*.otf"]
+  
+[build]
+  command = "npm run build"
+  publish = "build"
