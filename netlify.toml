@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "cp -r ./clicker ./build && npm run build"
   publish = "build"
 
 [functions]
