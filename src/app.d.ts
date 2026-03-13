@@ -14,6 +14,8 @@ declare global {
 		shop: ShopItem[];
 		persecond: number;
 		perclick: number;
+		multperclick: number;
+		highScore: number;
 	}
 	declare type ShopItem = {
 		name: string;
@@ -21,12 +23,11 @@ declare global {
 		variety: string;
 		value: number;
 		price: number;
+		description: string;
+		hasPurchased?: boolean;
 	}
 
-	export async function sleep(ms: number): Promise<void> {
-        return new Promise(
-        (resolve) => setTimeout(resolve, ms));
-    }
+	
 }
 
 export {};

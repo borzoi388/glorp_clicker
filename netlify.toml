@@ -1,3 +1,6 @@
 [build]
   command = "npm run build"
   publish = "build"
+
+[functions]
+  included_files = ["src/lib/images/*.png", "src/lib/RetroByte.ttf", "src/lib/*.otf"]
