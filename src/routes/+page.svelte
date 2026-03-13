@@ -207,7 +207,7 @@
             </div>
 
             <!--CEILING-->
-            <div onclick={click} class="justify-self-center bg-[url(images/ceiling.png)] bg-cover bg-center h-[40vh] w-[40vh]" bind:this={ceiling}></div>
+            <div onclick={click} class="justify-self-center bg-[url(ceiling.png)] bg-cover bg-center h-[40vh] w-[40vh]" bind:this={ceiling}></div>
             
         </div>
         <div class="col-span-1 bg-purple-300 p-4 flex flex-col">
