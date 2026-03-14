@@ -14,11 +14,11 @@
 @layer base {
     @font-face {
         font-family: 'Star-Crush';
-        src: url('Star Crush.otf');
+        src: url('src/lib/Star Crush.otf');
     }
     @font-face {
         font-family: 'RetroByte';
-        src: url('RetroByte.ttf');
+        src: url('src/lib/RetroByte.ttf');
     }
 }
 
