@@ -26,7 +26,6 @@ declare global {
 		description: string;
 		hasPurchased?: boolean;
 	}
-
 	
 }
 

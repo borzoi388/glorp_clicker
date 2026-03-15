@@ -1,5 +1,6 @@
 <script lang=ts>
     import { animate } from "animejs";
+    import { ceiling } from "./Images.ts"
     import { browser } from "$app/environment";
     export async function sleep(ms: number): Promise<void> {
         return new Promise(
@@ -7,7 +8,7 @@
     }
     import { onMount } from "svelte";
 
-    let ceiling: HTMLDivElement;
+    let ceilingDiv: HTMLDivElement;
     const { initX, initY, turn }: { initX: number, initY: number, turn: number } = $props();
     let y: number = $state(0);
     let x: number = $state(0);
@@ -16,7 +17,7 @@
         y = initY;
         x = initX;
         fall();
-        animate(ceiling, {
+        animate(ceilingDiv, {
             opacity: [0.8, 0],
             rotate: [0, Math.round(turn*150)],
             ease: "in",
@@ -35,5 +36,5 @@
     }
 </script>
 
-<div bind:this={ceiling} style="position: fixed; top: {y}px; left: {x}px" class="opacity-0 pointer-events-none bg-[url(src/lib/images/ceiling.png)] h-[40vh] w-[40vh] bg-contain -translate-1/2"></div>
+<div bind:this={ceilingDiv} style="position: fixed; top: {y}px; left: {x}px" class="opacity-0 pointer-events-none bg-[url({ceiling})] h-[40vh] w-[40vh] bg-contain -translate-1/2"></div>
     

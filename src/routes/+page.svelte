@@ -3,69 +3,72 @@
         return new Promise(
         (resolve) => setTimeout(resolve, ms));
     }
+
+
+
 	function newGame(): Game {
 		return { 
             score: 0,
             shop: [
                 { 
                     name: "Low quality ceiling",
-                    icon: "src/lib/images/ceiling5.png",
+                    icon: images.ceiling5,
                     variety: "click",
                     value: 1,
                     price: 15,
                     description: "Is it a speck of sand? Is it a singular pixel? No... it's low quality ceiling!"
                 }, {
                     name: "Deflated blahaj",
-                    icon: "src/lib/images/blahaj2.png",
+                    icon: images.blahaj2,
                     variety: "auto",
                     value: 1,
                     price: 100,
                     description: "Blahaj!! But... where is its robustness!?",
                 }, {
                     name: "Low poly blahaj",
-                    icon: "src/lib/images/blahaj3.png",
+                    icon: images.blahaj3,
                     variety: "click",
                     value: 6,
                     price: 500,
                     description: "A fresh looking blahaj with a few faces",
                 }, {
                     name: "Ceiling",
-                    icon: "src/lib/images/ceiling.png",
+                    icon: images.ceiling,
                     variety: "auto",
                     value: 8,
                     price: 1500,
                     description: "6.8 ounces and full of ceiling",
                 }, {
                     name: "Blahaj",
-                    icon: "src/lib/images/blahaj.png",
+                    icon: images.blahaj,
                     variety: "click",
                     value: 24,
                     price: 4000,
                     description: "39.25 inches of pure shonk!",
                 }, {
                     name: "Double ceiling",
-                    icon: "src/lib/images/ceiling2.png",
+                    icon: images.ceiling2,
                     variety: "auto",
                     value: 50,
                     price: 10000,
                     description: "Double the ceiling, double the fun!",
                 }, {
                     name: "Bass ceiling",
-                    icon: "src/lib/images/seal_bassist.png",
+                    icon: images.seal_bassist,
                     variety: "cpc",
                     value: 0.1,
                     price: 20000,
                     description: "A ceiling with a bass guitar",
                 }, {
                     name: "Ceiling family",
-                    icon: "src/lib/images/ceiling3.png",
+                    icon: images.ceiling3,
                     variety: "auto",
                     value: 800,
                     price: 40000,
                     description: "This number of ceilings for such a low low price!? Unprecedented!",
                 }, {
                     name: "High quality ceiling",
-                    icon: "src/lib/images/ceiling4.png",
+                    icon: images.ceiling4,
                     variety: "auto",
                     value: 2000,
                     price: 100000,
@@ -91,6 +94,7 @@
     import ShopItemComponent from "./ShopItemComponent.svelte";
     import Btn from "./Btn.svelte";
     import Slots from "./Slots.svelte";
+    import * as images from "./Images.ts";
 
     let ceilingAnimations: any;
     let hideAnimations: boolean = $state(false);
@@ -99,11 +103,11 @@
     let subscribe: boolean = false;
     let game = $state(writable(newGame()));
 
-    let ceiling: HTMLDivElement
+    let ceilingDiv: HTMLDivElement
 
     onMount(() => {
         start();
-        // ceiling_spin();
+        ceiling_spin();
         addCPS()
     })
 
@@ -133,7 +137,7 @@
     })
 
     async function click() {
-        animate(ceiling, {
+        animate(ceilingDiv, {
             scaleY: [1.1, 0.9, 1],
             scaleX: [0.9, 1.1, 1],
             ease: "in",
@@ -179,13 +183,13 @@
     }
 
     async function ceiling_spin() {
-        await animate(ceiling, {
+        await animate(ceilingDiv, {
             rotate: [-10, 10],
             duration: 3000,
             ease: "inOut",
         })
 
-        await animate(ceiling, {
+        await animate(ceilingDiv, {
             rotate: [10, -10],
             duration: 3000,
             ease: "inOut",
@@ -207,7 +211,7 @@
             </div>
 
             <!--CEILING-->
-            <div onclick={click} class="justify-self-center bg-[url(ceiling.png)] bg-cover bg-center h-[40vh] w-[40vh]" bind:this={ceiling}></div>
+            <div onclick={click} class="justify-self-center bg-[url({images.ceiling})] bg-cover bg-center h-[40vh] w-[40vh]" bind:this={ceilingDiv}></div>
             
         </div>
         <div class="col-span-1 bg-purple-300 p-4 flex flex-col">
