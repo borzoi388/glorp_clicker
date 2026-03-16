@@ -36,5 +36,5 @@
     }
 </script>
 
-<div bind:this={ceilingDiv} style="position: fixed; top: {y}px; left: {x}px" class="opacity-0 pointer-events-none bg-[url({ceiling})] h-[40vh] w-[40vh] bg-contain -translate-1/2"></div>
+<img src={ceiling} bind:this={ceilingDiv} style="position: fixed; top: {y}px; left: {x}px" class="opacity-0 pointer-events-none h-[40vh] w-[40vh] object-contain -translate-1/2">
     

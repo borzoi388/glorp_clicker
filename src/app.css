@@ -15,10 +15,12 @@
     @font-face {
         font-family: 'Star-Crush';
         src: url('src/lib/Star Crush.otf');
+        /*https://cdn.hackclub.com/019cf234-ee23-7a98-a409-afffaa7996e5/Star%20Crush.otf*/
     }
     @font-face {
         font-family: 'RetroByte';
         src: url('src/lib/RetroByte.ttf');
+        /*https://cdn.hackclub.com/019cf234-ce2e-78ec-a095-390c3711dea8/RetroByte.ttf*/
     }
 }
 
@@ -36,4 +38,8 @@ div {
 
     -webkit-user-select: none;
     user-select: none;
+}
+
+button {
+    font-family: Star-Crush
 }

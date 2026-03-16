@@ -2,14 +2,18 @@
     import { onMount } from "svelte";
     import Number from "./Number.svelte";
     import GambleScore from "./GambleScore.svelte";
+    import Btn from "./Btn.svelte";
+    import { writable } from "svelte/store";
 
     async function sleep(ms: number): Promise<void> {
         return new Promise(
         (resolve) => setTimeout(resolve, ms));
     }
     let popup: GambleScore;
-    let { score = $bindable() } = $props();
+    let showPrizes: boolean = $state(false)
+    let { game = $bindable() } = $props();
     let isBetting: boolean = $state(false)
+    let bettingAll = $state(writable<boolean>(false))
 
     let nums: Array<Array<number | string>> = [
         [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -29,11 +33,23 @@
         {prev: 6, curr: 7, next: 8},
     ])
 
-    let bet: number | undefined = $state();
+    game.subscribe((value: any) => {
+        if ($bettingAll) {
+            bet = $game.score
+        }
+    })
+
+    bettingAll.subscribe((value) => {
+        console.log(Math.random())
+        game.update(() => $game);
+    })
+
+    let bet = $state();
+
     function checkBet() {
         if (bet) {
-            if (bet > score) {
-                bet = Math.floor(score);
+            if (bet > $game.score) {
+                bet = Math.floor($game.score);
             } else if (bet < 1) {
                 bet = 1;
             }
@@ -93,7 +109,7 @@
             } else { mult = 4 }
         }
         popup.appear(bet*mult);
-        score += bet*mult;
+        $game.score += bet*mult;
         checkBet();
         isBetting = false;
     }
@@ -106,6 +122,9 @@
     }
 </script>
 
+<center>
+    <Btn label="Show prizes" bind:isChecked={showPrizes} classes="m-0 mt-2"/>
+</center>
 <div class="flex justify-center items-start p-3">
     <center class="w-1/2 mr-3">
         <div class="grid grid-cols-3 border border-blue-800 bg-slate-100">
@@ -124,17 +143,21 @@
                 <input type="number" onchange={checkBet} bind:value={bet} class="focus:ring-0 focus:border-none focus:outline-none text-4xl outline-none block w-full p-0 border-none bg-transparent">
             </label>
         </div>
-
-        <button onclick={() => spinCol(0, 25)} class="{bet == null || isBetting ? "translate-[2px] text-blue-800/80" : "text-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)] active:shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] active:translate-[2px] active:p-[9px_15px_7px_17px]"} px-[16px] py-[8px] text-6xl font-[Star-Crush] bg-rose-200 border-2 border-blue-800 translate-0">Bet</button>
+        <div class="grid grid-cols-2 text-4xl">
+            <Btn label="Bet all" bind:isChecked={$bettingAll} classes="col-span-1 font-[Star-Crush] m-[0px_0px_0px_0px]"/>
+            <button onclick={() => spinCol(0, 25)} class="col-span-1 {bet == null || isBetting ? "translate-[2px] text-blue-800/80" : "text-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)] active:shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] active:translate-[2px] active:p-[9px_15px_7px_17px]"} px-[16px] py-[8px] font-[Star-Crush] bg-rose-200 border-2 border-blue-800 translate-0">Bet</button>
+        </div>
     </center>
-    <div class="w-1/2 bg-slate-100 border border-2 border-blue-800 p-2 text-blue-800">
-        No matches: lose your bet <br>
-        Two of any number: 2x your bet <br>
-        Three of any number: 4x your bet <br>
-        One of any special: keep your bet <br>
-        Two of any special: 3x your bet <br>
-        Three of any special: 25x your bet <br>
-        Three ceilings: 100x your bet <br>
-    </div>
+    {#if showPrizes}
+        <div class="w-1/2 bg-slate-100 border border-2 border-blue-800 p-2 text-blue-800">
+            No matches: lose your bet <br>
+            Two of any number: 2x your bet <br>
+            Three of any number: 4x your bet <br>
+            One of any special: keep your bet <br>
+            Two of any special: 3x your bet <br>
+            Three of any special: 25x your bet <br>
+            Three ceilings: 100x your bet <br>
+        </div>
+    {/if}
     <GambleScore bind:this={popup}/>
 </div>

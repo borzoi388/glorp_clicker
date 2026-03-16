@@ -107,7 +107,7 @@
 
     onMount(() => {
         start();
-        ceiling_spin();
+        // ceiling_spin();
         addCPS()
     })
 
@@ -211,7 +211,7 @@
             </div>
 
             <!--CEILING-->
-            <div onclick={click} class="justify-self-center bg-[url({images.ceiling})] bg-cover bg-center h-[40vh] w-[40vh]" bind:this={ceilingDiv}></div>
+            <img onclick={click} src={images.ceiling} class="justify-self-center object-cover object-center h-[40vh] w-[40vh]" bind:this={ceilingDiv}>
             
         </div>
         <div class="col-span-1 bg-purple-300 p-4 flex flex-col">
@@ -232,7 +232,7 @@
                         </div>
                     {/each}
                 {:else}
-                    <Slots animations={ceilingAnimations} bind:score={$game.score}/>
+                    <Slots animations={ceilingAnimations} bind:game={game}/>
                 {/if}
             </div>
         </div>
@@ -247,7 +247,7 @@
             <div class="col-span-1 text-center">
                 <span class="outline-shadow-sm">{$game.persecond.toFixed(2)}</span><CeilingPoint/><span class="outline-shadow-sm">/s</span>
             </div>
-            <div class="col-span-1 text-right">
+            <div class="col-spa<number | undefined>n-1 text-right">
                 <span class="outline-shadow-sm">{$game.perclick.toFixed(2)}</span><CeilingPoint/><span class="outline-shadow-sm">/click</span>
             </div>
         </div>
