@@ -4,6 +4,4 @@ A very seal-ly clicker game that's ceiling themed
 ## Features
 - A ceiling that you can click
 - Shop where you can buy stuff
-## To be added
-- SLOTS
-- More gambling
+- Slots!!
