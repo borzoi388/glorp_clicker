@@ -2,8 +2,8 @@
 	"name": "clicker",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "bun run dev",
-		"build": "bun run build && npm run prepack",
+		"dev": "vite dev",
+		"build": "vite build && npm run prepack",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"prepack": "svelte-kit sync && svelte-package && publint",
