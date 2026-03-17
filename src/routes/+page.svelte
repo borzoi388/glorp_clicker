@@ -135,6 +135,9 @@
                     }
                 }
             subscribe = true;
+        } else {
+            await sleep(1);
+            start();
         }
     }
     game.subscribe(() => {
