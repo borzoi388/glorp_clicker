@@ -258,6 +258,6 @@
 </main>
 <div class="lg:invisible fixed top-0 left-0 bg-sky-200 w-screen h-[100vh] flex flex-wrap justify-center content-center text-center p-2">
     <h1 class="font-[Star-Crush] outline-shadow-sm text-6xl">Doesn't work on mobile</h1>
-    <div class="bg-[url(src/lib/images/ceiling.png)] bg-contain bg-no-repeat bg-center w-full h-32"></div>
+    <div class="bg-[url({images.ceiling})] bg-contain bg-no-repeat bg-center w-full h-32"></div>
     <h1 class="font-[Star-Crush] outline-shadow-sm text-6xl">come back on computer plz 👍</h1>
 </div>
