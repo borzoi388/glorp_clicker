@@ -5,5 +5,6 @@ export const ceiling = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/ceiling.png
 export const ceiling2 = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/ceiling2.png'
 export const ceiling3 = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/ceiling3.png'
 export const ceiling4 = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/ceiling4.png'
-export const ceiling5 = 'hhttps://file.garden/ZkBDsuuu7xnrA2XU/ceiling/ceiling5.png'
+export const ceiling5 = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/ceiling5.png'
 export const seal_bassist = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/seal_bassist.png'
+export const ceiling6 = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/ceiling6.png'

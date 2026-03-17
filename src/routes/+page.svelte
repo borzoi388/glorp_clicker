@@ -13,14 +13,14 @@
                     icon: images.ceiling5,
                     variety: "click",
                     value: 1,
-                    price: 15,
+                    price: 50,
                     description: "Is it a speck of sand? Is it a singular pixel? No... it's low quality ceiling!"
                 }, {
                     name: "Deflated blahaj",
                     icon: images.blahaj2,
                     variety: "auto",
                     value: 1,
-                    price: 100,
+                    price: 200,
                     description: "Blahaj!! But... where is its robustness!?",
                 }, {
                     name: "Low poly blahaj",
@@ -40,7 +40,7 @@
                     name: "Blahaj",
                     icon: images.blahaj,
                     variety: "click",
-                    value: 24,
+                    value: 36,
                     price: 4000,
                     description: "39.25 inches of pure shonk!",
                 }, {
@@ -71,6 +71,13 @@
                     value: 2000,
                     price: 100000,
                     description: "This ceiling has extended beyond its dimension to something greater...?!",
+                }, {
+                    name: "Wooden ceiling",
+                    icon: images.ceiling6,
+                    variety: "click",
+                    value: 5341,
+                    price: 300000,
+                    description: "A never before seen ceiling...",
                 },
             ],
             perclick: 1,
@@ -119,9 +126,14 @@
     async function start() {
         if (browser) {
             const localStoredGame = localStorage.getItem("game");
+            let newThing: Game = newGame();
             if (!localStoredGame) {
-                $game = newGame() } else 
-                { $game = JSON.parse(localStoredGame) }
+                $game = newThing } else { 
+                    $game = JSON.parse(localStoredGame) 
+                    if (newThing.shop != $game.shop) {
+                        $game.shop = [...newThing.shop];
+                    }
+                }
             subscribe = true;
         }
     }
