@@ -20,7 +20,7 @@
 
 </script>
 
-<span bind:this={text} class="text-rose-200 fixed pointer-events-none text-6xl" style="top: {initY+turn}px; left: {initX+turn}px">
-    <span class="outline-shadow-sm">+{score}</span><CeilingPoint/>
-</span>
+<div bind:this={text} class="flex text-rose-200 fixed pointer-events-none text-6xl items-center" style="top: {initY+turn}px; left: {initX+turn}px">
+    <span class="outline-shadow-sm">+{score}</span><CeilingPoint h={2.75}/>
+</div>
     
