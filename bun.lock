@@ -4,9 +4,9 @@
     "": {
       "name": "clicker",
       "dependencies": {
-        "clicker": ".",
         "@sveltejs/adapter-netlify": "^6.0.4",
         "animejs": "^4.3.6",
+        "clicker": ".",
       },
       "devDependencies": {
         "@sveltejs/kit": "^2.55.0",
