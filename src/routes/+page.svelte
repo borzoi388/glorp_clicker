@@ -105,7 +105,7 @@
 
     onMount(() => {
         start();
-        // ceiling_spin();
+        ceiling_spin();
         addCPS()
     })
 
