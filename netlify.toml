@@ -1,8 +1,4 @@
 
-[functions]
-  included_files = ["./src/lib/images/*", "src/lib/RetroByte.ttf", "./src/lib/Star-Crush.otf"]
-
-  
 [build]
   command = "npm run build"
   publish = "build"
