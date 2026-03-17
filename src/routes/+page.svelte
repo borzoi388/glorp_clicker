@@ -10,63 +10,63 @@
             shop: [
                 { 
                     name: "Low quality ceiling",
-                    icon: "src/lib/images/ceiling5.png",
+                    icon: images.ceiling5,
                     variety: "click",
                     value: 1,
                     price: 15,
                     description: "Is it a speck of sand? Is it a singular pixel? No... it's low quality ceiling!"
                 }, {
                     name: "Deflated blahaj",
-                    icon: "src/lib/images/blahaj2.png",
+                    icon: images.blahaj2,
                     variety: "auto",
                     value: 1,
                     price: 100,
                     description: "Blahaj!! But... where is its robustness!?",
                 }, {
                     name: "Low poly blahaj",
-                    icon: "src/lib/images/blahaj3.png",
+                    icon: images.blahaj3,
                     variety: "click",
                     value: 6,
                     price: 500,
                     description: "A fresh looking blahaj with a few faces",
                 }, {
                     name: "Ceiling",
-                    icon: "src/lib/images/ceiling.png",
+                    icon: images.ceiling,
                     variety: "auto",
                     value: 8,
                     price: 1500,
                     description: "6.8 ounces and full of ceiling",
                 }, {
                     name: "Blahaj",
-                    icon: "src/lib/images/blahaj.png",
+                    icon: images.blahaj,
                     variety: "click",
                     value: 24,
                     price: 4000,
                     description: "39.25 inches of pure shonk!",
                 }, {
                     name: "Double ceiling",
-                    icon: "src/lib/images/ceiling2.png",
+                    icon: images.ceiling2,
                     variety: "auto",
                     value: 50,
                     price: 10000,
                     description: "Double the ceiling, double the fun!",
                 }, {
                     name: "Bass ceiling",
-                    icon: "src/lib/images/seal_bassist.png",
-                    variety: "cpc",
-                    value: 0.1,
+                    icon: images.seal_bassist,
+                    variety: "click",
+                    value: 120,
                     price: 20000,
                     description: "A ceiling with a bass guitar",
                 }, {
                     name: "Ceiling family",
-                    icon: "src/lib/images/ceiling3.png",
+                    icon: images.ceiling3,
                     variety: "auto",
                     value: 800,
                     price: 40000,
                     description: "This number of ceilings for such a low low price!? Unprecedented!",
                 }, {
                     name: "High quality ceiling",
-                    icon: "src/lib/images/ceiling4.png",
+                    icon: images.ceiling4,
                     variety: "auto",
                     value: 2000,
                     price: 100000,
@@ -209,7 +209,7 @@
             </div>
 
             <!--CEILING-->
-            <img onclick={click} src="src/lib/images/ceiling.png" class="justify-self-center object-cover object-center h-[40vh] w-[40vh]" bind:this={ceilingDiv}>
+            <img onclick={click} src={images.ceiling} class="justify-self-center object-cover object-center h-[40vh] w-[40vh]" bind:this={ceilingDiv}>
             
         </div>
         <div class="col-span-1 bg-purple-300 p-4 flex flex-col">

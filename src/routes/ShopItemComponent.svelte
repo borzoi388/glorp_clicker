@@ -34,11 +34,7 @@
                 <span class="block">{!hidden ? item.description : '???'}</span>
                 <span class="text-md flex">
                     cost: {!hidden ?  item.price : '???'}<CeilingPoint/>
-                    {#if (item.variety == "cpc")}
-                        | +{!hidden ? item.value : "???"}% <CeilingPoint/> on click 
-                    {:else}
-                        | +{!hidden ? item.value : "???"}<CeilingPoint/> per {item.variety == "auto" ? "second" : "click"}
-                    {/if}
+                    | +{!hidden ? item.value : "???"}<CeilingPoint/> per {item.variety == "auto" ? "second" : "click"}
                 </span>
             </div>
         </div>
