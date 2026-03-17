@@ -49,6 +49,7 @@
 	],
 	"dependencies": {
 		"@sveltejs/adapter-netlify": "^6.0.4",
+		"@sveltejs/adapter-static": "^3.0.10",
 		"animejs": "^4.3.6",
 		"clicker": "."
 	}
