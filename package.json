@@ -49,6 +49,7 @@
 	],
 	"dependencies": {
 		"@sveltejs/adapter-netlify": "^6.0.4",
+		"@sveltejs/adapter-vercel": "^6.3.3",
 		"animejs": "^4.3.6"
 	}
 }
