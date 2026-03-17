@@ -1,10 +1,7 @@
 
 [functions]
-  included_files = ["./src/lib/images/*", "./src/lib/*.ttf", "./src/lib/*.otf"]
+  included_files = ["./src/lib/images/*", "src/lib/RetroByte.ttf", "./src/lib/Star-Crush.otf"]
 
-[[redirects]]
-  from = "ceiling.png"
-  to = "./src/lib/images/ceiling.png"
   
 [build]
   command = "npm run build"

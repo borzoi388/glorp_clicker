@@ -14,7 +14,7 @@
 @layer base {
     @font-face {
         font-family: 'Star-Crush';
-        src: url('src/lib/Star Crush.otf');
+        src: url('Star-Crush.otf');
         /*https://cdn.hackclub.com/019cf234-ee23-7a98-a409-afffaa7996e5/Star%20Crush.otf*/
     }
     @font-face {

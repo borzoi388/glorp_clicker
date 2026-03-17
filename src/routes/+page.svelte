@@ -241,13 +241,13 @@
     </div>
     <div class="w-full row-span-1 p-4 bg-sky-200 z-index-2 overflow-hidden">
         <div class="block font-[Star-Crush] text-6xl flex grid grid-cols-3">
-            <div class="col-span-1">
-                <span class="outline-shadow-sm">{Math.round($game.score).toLocaleString('en-US')}</span><CeilingPoint/>
+            <div class="col-span-1 flex">
+                <span class="outline-shadow-sm">{Math.round($game.score).toLocaleString('en-US')}</span><CeilingPoint h=3.75/>
             </div>
-            <div class="col-span-1 text-center">
+            <div class="col-span-1 text-center flex">
                 <span class="outline-shadow-sm">{$game.persecond.toFixed(2)}</span><CeilingPoint/><span class="outline-shadow-sm">/s</span>
             </div>
-            <div class="col-spa<number | undefined>n-1 text-right">
+            <div class="col-spa<number | undefined>n-1 text-right flex">
                 <span class="outline-shadow-sm">{$game.perclick.toFixed(2)}</span><CeilingPoint/><span class="outline-shadow-sm">/click</span>
             </div>
         </div>
