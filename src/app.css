@@ -13,12 +13,12 @@
 
 @font-face {
     font-family: 'Star-Crush';
-    src: url('/_app/immutable/assets/Star-Crush.otf')format("opentype");
+    src: url('https://file.garden/ZkBDsuuu7xnrA2XU/Star-Crush.otf')format("opentype");
     /*https://cdn.hackclub.com/019cf234-ee23-7a98-a409-afffaa7996e5/Star%20Crush.otf*/
 }
 @font-face {
     font-family: 'RetroByte';
-    src: url('src/lib/RetroByte.ttf')format("truetype");
+    src: url('https://file.garden/ZkBDsuuu7xnrA2XU/RetroByte.ttf')format("truetype");
     /*https://cdn.hackclub.com/019cf234-ce2e-78ec-a095-390c3711dea8/RetroByte.ttf*/
 }
 

@@ -7,3 +7,4 @@ export const ceiling3 = 'https://cdn.hackclub.com/019cf1de-8c19-7994-8f99-fc8177
 export const ceiling4 = 'https://cdn.hackclub.com/019cf1de-7dae-72b9-a047-0671ffd3b33d/ceiling4.png'
 export const ceiling5 = 'https://cdn.hackclub.com/019cf1de-60fe-7b9e-b360-8c653c2fa558/ceiling5.png'
 export const seal_bassist = 'https://cdn.hackclub.com/019cf1de-3aec-78b0-b271-77758b1e5cda/seal_bassist.png'
+export const hidden_ceiling = 'https://user-cdn.hackclub-assets.com/019cfce7-c441-7b47-8c2d-5d33bc6cf6d0/ceiling_copy.png'
