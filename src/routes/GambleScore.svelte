@@ -24,8 +24,7 @@
 </script>
 
 <div bind:this={span} class="flex text-center font-[Star-Crush] text-8xl opacity-0 fixed top-1/2 left-1/2 -translate-1/2 pointer-events-none">
-    <span class="outline-shadow-lg">
-    {score == 0 ? "Next time!" : score > 0 ? "Ka-ching!" : "Aw dang it!"}
-    {score >= 0 ? "+" : ""}{score}</span><CeilingPoint h={6}/>
+    <p class="outline-shadow-lg">
+    {score == 0 ? "Next time!" : score > 0 ? "Ka-ching!" : "Aw dang it!"} {score >= 0 ? "+" : ""}{score}</p><CeilingPoint h={6}/>
     
 </div>
