@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script lang=ts>
     async function sleep(ms: number): Promise<void> {
         return new Promise(
@@ -102,7 +103,9 @@
     import * as images from "./Images.ts";
 
     let ceilingAnimations: any;
+    let animationDistance: number = $state(0);
     let hideAnimations: boolean = $state(false);
+    let hideCeilings: boolean = $state(false);
     let gambling: boolean = $state(false);
 
     let subscribe: boolean = false;
@@ -126,17 +129,14 @@
     async function start() {
         if (browser) {
             const localStoredGame = localStorage.getItem("game");
-            let newThing: Game = newGame();
             if (!localStoredGame) {
-                $game = newThing } else { 
+                $game = newGame() } else { 
                     $game = JSON.parse(localStoredGame) 
-                    if (newThing.shop != $game.shop) {
-                        $game.shop = [...newThing.shop];
-                    }
                 }
             subscribe = true;
         } else {
             await sleep(1);
+            console.log("e")
             start();
         }
     }
@@ -190,41 +190,54 @@
             localStorage.removeItem("game"); 
             localStorage.setItem("game", JSON.stringify(newGame())); 
             $game = JSON.parse(localStorage.getItem("game"))
+            console.log("yay")
             game.update(() => $game);
 
         }
     }
 
     async function ceiling_spin() {
-        await animate(ceilingDiv, {
+        animationDistance = 0;
+        animate(ceilingDiv, {
             rotate: [-10, 10],
-            duration: 3000,
+            duration: 2500,
             ease: "inOut",
         })
-
-        await animate(ceilingDiv, {
+        for (let i = 0; i < 50; i++) {
+            await sleep(50);
+            animationDistance++;
+        }
+        animate(ceilingDiv, {
             rotate: [10, -10],
-            duration: 3000,
+            duration: 2500,
             ease: "inOut",
         })
+        for (let i = 0; i < 50; i++) {
+            await sleep(50);
+            animationDistance++;
+        }
         await ceiling_spin();
     }
 
 </script>
 
-<main class="font-[RetroByte] text-xl h-[100vh] bg-green-200 grid grid-rows-10">
+<main class="font-[RetroByte] text-xl h-[100vh] grid grid-rows-10 overflow-hidden">
     <div class="grid grid-cols-2 row-span-9 w-full bg-orange-200 content-stretch">
-        <div class="col-span-1 content-space-between bg-slate-100 grid">
-            <div class="bg-sky-200 bg-contain bg-center bg-no-repeat self-start w-full text-center p-4">
+        <div class="col-span-1 bg-slate-200 flex flex-col content-stretch" style={hideCeilings ? "" : "background: url("+images.ceilings+"); background-size: 100px; background-position-x: "+animationDistance+"px; background-position-y: "+animationDistance*497/575+"px"}>
+            <div class="self-start flex-grow-1 bg-sky-200 bg-contain bg-center bg-no-repeat self-start w-full text-center p-4">
                 <h1 class="text-8xl font-[Star-Crush] outline-shadow-lg">Ceiling Clicker</h1>
                 <div class="block flex flex-wrap mt-2 justify-center">
-                    <Btn bind:isChecked={hideAnimations} label="Hide Animations"/>
+                    <Btn bind:isChecked={hideAnimations} label="Hide Clicky Ceilings"/>
+                    <Btn bind:isChecked={hideCeilings} label="Hide Scrolling Ceilings"/>
                     <button class="px-[8px] py-[4px] text-blue-800 bg-rose-200 border-2 border-blue-800 shadow-[2px_2px_0px_0px_var(--color-blue-800)] translate-0 active:shadow-[inset_1px_1px_0px_0px_var(--color-blue-800)] active:translate-[2px] active:p-[5px_7px_3px_9px] m-1" onclick={clearGame}>Reset Game</button>
                 </div>
             </div>
-
-            <!--CEILING-->
-            <img onclick={click} src={images.ceiling} class="justify-self-center object-cover object-center h-[40vh] w-[40vh]" bind:this={ceilingDiv}>
+            
+            <div class="{hideCeilings ? "bg-slate-100/25" : "bg-slate-100/80"} grid size-full">
+                <!--CEILING-->
+                <img onclick={click} src={images.ceiling} class="justify-self-center self-center object-cover object-center h-[40vh] w-[40vh]" bind:this={ceilingDiv}>
+            </div>
+            
             
         </div>
         <div class="col-span-1 bg-purple-300 p-4 flex flex-col">

@@ -8,3 +8,4 @@ export const ceiling4 = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/ceiling4.p
 export const ceiling5 = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/ceiling5.png'
 export const seal_bassist = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/seal_bassist.png'
 export const ceiling6 = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/ceiling6.png'
+export const ceilings = 'https://file.garden/ZkBDsuuu7xnrA2XU/ceiling/ceilings.jpg'
