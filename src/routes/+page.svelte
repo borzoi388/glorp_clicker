@@ -268,7 +268,7 @@
     <div class="w-full row-span-1 p-4 bg-sky-200 z-index-2 overflow-hidden">
         <div class="block font-[Star-Crush] text-6xl flex grid grid-cols-3">
             <div class="col-span-1 flex">
-                <span class="outline-shadow-sm">{Math.round($game.score).toLocaleString('en-US')}</span><CeilingPoint h={3.75}/>
+                <span class="outline-shadow-sm">{$game.score > 10000000 ? Math.round($game.score).toExponential(3) : Math.round($game.score).toLocaleString('en-US')}</span><CeilingPoint h={3.75}/>
             </div>
             <div class="col-span-1 text-center flex">
                 <span class="outline-shadow-sm">{$game.persecond.toFixed(2)}</span><CeilingPoint h={3.75}/><span class="outline-shadow-sm">/s</span>

@@ -140,7 +140,7 @@
         <div class="my-3 bg-slate-100 border border-2 border-blue-800 text-center p-2">
             <label class="text-4xl text-blue-800 font-[Star-Crush]">
                 Bet
-                <input type="number" onchange={checkBet} bind:value={bet} class="focus:ring-0 focus:border-none focus:outline-none text-4xl outline-none block w-full p-0 border-none bg-transparent">
+                <input type="number" onclick={() => $bettingAll = false} onchange={checkBet} bind:value={bet} class="focus:ring-0 focus:border-none focus:outline-none text-4xl outline-none block w-full p-0 border-none bg-transparent">
             </label>
         </div>
         <div class="grid grid-cols-2 text-4xl">
