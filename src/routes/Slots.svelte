@@ -88,7 +88,7 @@
             if (map.has("ceiling")&&map.has("blahaj")) {
                 mult = 3;
             } else if (map.has("ceiling")||map.has("blahaj")) {
-                mult = 0;
+                mult = -0.5;
             }
         } else if (map.size == 2) {
             if (map.has("ceiling") && map.has("blahaj")) {
@@ -153,7 +153,7 @@
             No matches: lose your bet <br>
             Two of any number: 2x your bet <br>
             Three of any number: 4x your bet <br>
-            One of any special: keep your bet <br>
+            One of any special: lose 1/2 your bet <br>
             Two of any special: 3x your bet <br>
             Three of any special: 25x your bet <br>
             Three ceilings: 100x your bet <br>
